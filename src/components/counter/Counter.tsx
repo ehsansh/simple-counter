@@ -9,7 +9,7 @@ function Counter() {
             <div className="text-2xl font-bold text-gray-800">Count is: {count}</div>
             <div className="flex gap-4">
                 <Button action={increment}>Increment</Button>
-                <Button color="danger" action={decrement}>
+                <Button isDisabled={count === 0} color="danger" action={decrement}>
                     Decrement
                 </Button>
             </div>
