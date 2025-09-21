@@ -13,6 +13,9 @@ function Counter() {
                     Decrement
                 </Button>
             </div>
+            {count === 0 && (
+                <div className="text-sm text-gray-800 mt-2">Count cannot go below 0</div>
+            )}
         </div>
     );
 }
