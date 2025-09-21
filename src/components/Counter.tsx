@@ -1,6 +1,6 @@
-import Button from './Button';
+import Button from '@/components/Button';
 
-import { useCounter } from '../hooks/useCounter';
+import { useCounter } from '@/hooks/useCounter';
 
 function Counter() {
     const { count, increment, decrement } = useCounter(0);
