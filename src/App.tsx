@@ -1,20 +1,7 @@
 import './App.css';
-import Button from './components/Button';
-
-import { useCounter } from './hooks/useCounter';
-
+import Counter from './components/Counter';
 function App() {
-    const { count, increment, decrement } = useCounter(0);
-
-    return (
-        <>
-            <div>{count}</div>
-            <div>
-                <Button action={increment}>Increment</Button>
-                <Button action={decrement}>Decrement</Button>
-            </div>
-        </>
-    );
+    return <Counter />;
 }
 
 export default App;
