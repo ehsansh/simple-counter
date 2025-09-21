@@ -1,69 +1,51 @@
-# React + TypeScript + Vite
+# Counter Component Challenge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project implements a simple counter component as part of a React + TypeScript coding challenge.  
+The counter includes:
 
-Currently, two official plugins are available:
+- A display showing the current count
+- Buttons to increment and decrement the count
+- The count never goes below zero
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React** (with functional components + hooks)
+- **TypeScript** (for type safety)
+- **TailwindCSS** (for utility-first styling)
 
-```js
-export default defineConfig([
-    globalIgnores(['dist']),
-    {
-        files: ['**/*.{ts,tsx}'],
-        extends: [
-            // Other configs...
+---
 
-            // Remove tseslint.configs.recommended and replace with this
-            tseslint.configs.recommendedTypeChecked,
-            // Alternatively, use this for stricter rules
-            tseslint.configs.strictTypeChecked,
-            // Optionally, add this for stylistic rules
-            tseslint.configs.stylisticTypeChecked,
+## Project Structure
 
-            // Other configs...
-        ],
-        languageOptions: {
-            parserOptions: {
-                project: ['./tsconfig.node.json', './tsconfig.app.json'],
-                tsconfigRootDir: import.meta.dirname,
-            },
-            // other options...
-        },
-    },
-]);
-```
+- `useCounter` → A custom hook that encapsulates the counter logic (increment, decrement, preventing negative values).
+    - This makes the logic modular and reusable.
+- `Button` → A **dumb/presentational component** that only handles styling and rendering.
+    - It follows the **principle of least privilege**: it doesn’t manage its own state; instead, parent components pass actions as props.
+- `Counter` → A container component that wires `useCounter` with `Button`.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+## Design Decisions
 
-export default defineConfig([
-    globalIgnores(['dist']),
-    {
-        files: ['**/*.{ts,tsx}'],
-        extends: [
-            // Other configs...
-            // Enable lint rules for React
-            reactX.configs['recommended-typescript'],
-            // Enable lint rules for React DOM
-            reactDom.configs.recommended,
-        ],
-        languageOptions: {
-            parserOptions: {
-                project: ['./tsconfig.node.json', './tsconfig.app.json'],
-                tsconfigRootDir: import.meta.dirname,
-            },
-            // other options...
-        },
-    },
-]);
+- **Separation of Concerns**:  
+  Logic is inside the hook, UI is inside the components.
+- **Accessibility**:  
+  Buttons use the native `disabled` attribute and meaningful text for screen readers.
+- **Styling**:  
+  Used TailwindCSS with a small `Button.styles.ts` file to centralize style definitions.
+- **Extensibility**:  
+  Counter logic is abstracted into a hook, making it easy to plug into other components in the future.
+
+---
+
+## Usage
+
+```bash
+# Install dependencies
+npm install
+
+# Run the project
+npm run dev
 ```
