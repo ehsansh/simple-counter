@@ -1,4 +1,4 @@
-import { buttonBase, buttonColors, buttonDisabled } from './Button.styles';
+import { getButtonClasses } from './Button.styles';
 
 interface Props {
     children: React.ReactNode;
@@ -15,12 +15,10 @@ function Button({
     isDisabled = false,
     'aria-label': ariaLabel,
 }: Props) {
-    const className = [buttonBase, buttonColors[color], isDisabled ? buttonDisabled : ''].join(' ');
-
     return (
         <button
             onClick={action}
-            className={className}
+            className={getButtonClasses(color, isDisabled)}
             disabled={isDisabled}
             aria-disabled={isDisabled}
             aria-label={ariaLabel}
