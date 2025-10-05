@@ -1,27 +1,24 @@
 import { getButtonClasses } from './Button.styles';
 
-interface Props {
-    children: React.ReactNode;
-    action: () => void;
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
     color?: 'primary' | 'danger' | 'secondary';
-    isDisabled?: boolean;
-    'aria-label'?: string;
-}
+    isLoading?: boolean;
+};
 
 function Button({
     children,
-    action,
     color = 'primary',
-    isDisabled = false,
+    disabled = false,
     'aria-label': ariaLabel,
-}: Props) {
+    ...rest
+}: ButtonProps) {
     return (
         <button
-            onClick={action}
-            className={getButtonClasses(color, isDisabled)}
-            disabled={isDisabled}
-            aria-disabled={isDisabled}
+            className={getButtonClasses(color, disabled)}
+            disabled={disabled}
+            aria-disabled={disabled}
             aria-label={ariaLabel}
+            {...rest}
         >
             {children}
         </button>

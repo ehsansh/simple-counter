@@ -8,14 +8,14 @@ function Counter() {
         <div className="mt-8 flex flex-col items-center gap-4">
             <div className="text-2xl font-bold text-gray-800">Count is: {count}</div>
             <div className="flex gap-4">
-                <Button aria-label="Increment count" action={increment}>
+                <Button aria-label="Increment count" onClick={increment}>
                     Increment
                 </Button>
                 <Button
                     aria-label="Decrement count"
-                    isDisabled={count === 0}
+                    disabled={count === 0}
                     color="danger"
-                    action={decrement}
+                    onClick={decrement}
                 >
                     Decrement
                 </Button>
